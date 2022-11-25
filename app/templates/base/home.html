@@ -1,0 +1,74 @@
+
+{% extends 'base/main.html' %}
+
+
+{% block content %}
+
+
+
+<section  style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-12 col-xl-4">
+  
+            {% for r in rooms %}
+            <br><br>
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body text-center">
+              <div class="mt-3 mb-4">
+                <img src="{{r.your_name.image.url}}"
+                  class="rounded-circle img-fluid" style="width: 100px;" />
+              </div>
+              <h class="mb-2"></h>
+              <h5 class="text-muted mb-4">Room Creater @ {{r.your_name.name}}</span></h5>
+              <p class="text-muted mb-4">Help me @{{r.helper_name.username}}<span class="mx-2">|{{r.topic_name.name}}</span></p>
+              <p class="text-muted mb-4">{{r.room_name}}</span></p>
+
+              {% comment %} <h5 class="text-muted mb-4">hrlprt @ {{request.user}}</span></h5>
+              <h5 class="text-muted mb-4">your @ {{r.your_name.user}}</span></h5> {% endcomment %}
+            
+             
+              {% if request.user.is_authenticated %}
+
+              {% if  r.your_name.user != request.user %}
+              <a href="{% url 'room' r.id %}" class="btn btn-primary btn-rounded btn-lg">Message now</a>
+              {% else %}
+              <a href="{% url 'room' r.id %}" class="btn btn-primary btn-rounded btn-lg">Your Room</a>
+              {% endif %}
+            
+              {% else %}
+             
+              {% endif %}
+    
+    
+
+        
+              <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                <div>
+                  <p class="mb-2 h5">8471</p>
+                  <p class="text-muted mb-0">Wallets Balance</p>
+                </div>
+                <div class="px-3">
+                  <p class="mb-2 h5">8512</p>
+                  <p class="text-muted mb-0">Income amounts</p>
+                </div>
+                <div>
+                  <p class="mb-2 h5">4751</p>
+                  <p class="text-muted mb-0">Total Transactions</p>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock content %}
+
+
+
+

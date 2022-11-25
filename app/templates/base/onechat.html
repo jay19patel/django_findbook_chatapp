@@ -1,0 +1,50 @@
+
+{% extends 'base/main.html' %}
+{% block content %}
+
+
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+  
+        <div class="col-md-6 col-lg-7 col-xl-8">
+            <h4 class="card-header d-flex justify-content-between p-3 "> {{room.topic_name}}</h4>
+            <h4 class="card-header d-flex justify-content-between p-3 ">Helper Name : {{room.helper_name}}</h4>
+            <br><br>
+            <ul class="list-unstyled">
+            {% for message in room_messages  %}
+            <li class="d-flex justify-content-between mb-4">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between p-3">
+                  <p class="fw-bold mb-0">@ {{message.user}}</p>
+                  <p class="text-muted small mb-0"> {{message.created|timesince}}</p>
+                </div>
+                <div class="card-body">
+                  <p class="mb-0">
+                    message:  {{message.body}}
+                  </p>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+
+            {% if request.user.is_authenticated  %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                      alt="avatar 3" style="width: 40px; height: 100%;">
+                    <input type="text" class="form-control form-control-lg" id="exampleFormControlInput2"
+                      placeholder="Type message" name="body">
+                    <input class="btn btn-light btn-lg btn-rounded float-end" type="submit" value="Send"/>
+                  </div>
+            </form>             
+            {% endif %}
+        </div>
+  
+      </div>
+  
+    </div>
+  </section>
+
+  {% endblock content %}

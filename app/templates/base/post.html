@@ -1,0 +1,33 @@
+
+{% extends 'base/main.html' %}
+
+
+{% block content %}
+
+<h1 class="text-center">Upload Post</h1>
+<div class="container">
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+    action="{% url 'uploadPost' %}"
+  >
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Post Description</label>
+      <input type="text" class="form-control" id="exampleFormControlTextarea1"  rows="3" name="desc"></textarea>
+   
+    </div>
+    <div>
+      <label for="formFileLg" class="form-label">Your Post</label>
+      <input
+        class="form-control form-control-lg"
+        id="formFileLg"
+        type="file"
+        name="file"
+      />
+    </div>
+    <button type="submit" class="my-2 btn btn-primary">Post</button>
+  </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'base/main.html' %}
+
+
+{% block content %}
+
+
+<h1 class="text-center">Create Profile</h1>
+    <div class="container">
+      <form
+        action="{% url 'uploadprofile' %}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="mb-3">
+          <label  class="form-label">Enter Your Name </label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1"  rows="3" name="name "/>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Enter Your Email</label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1"  rows="3" name="email"/>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Enter Your Phone No.</label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1"  rows="3" name="phoneno"/>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Enter Your Location</label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1"  rows="3" name="location"/>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Enter Your Skills</label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1"  rows="3" name="skill"/>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Bio</label>
+          <input type="text" class="form-control" id="exampleFormControlTextarea1"  rows="3" name="bio"/>
+        </div>
+        <div>
+          <label for="formFileLg" class="form-label">Profile Pic</label>
+          <input class="form-control form-control-lg" id="formFileLg" type="file" name="file" />
+        </div>
+        <button type="submit" class="my-2 btn btn-primary">Post</button>
+      </form>
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}
